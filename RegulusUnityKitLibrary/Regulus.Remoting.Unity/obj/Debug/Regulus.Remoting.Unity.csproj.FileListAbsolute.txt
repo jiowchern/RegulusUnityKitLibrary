@@ -1,0 +1,5 @@
+D:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Remoting.Unity.dll
+D:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Remoting.Unity.pdb
+D:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\obj\Debug\Regulus.Remoting.Unity.dll
+D:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\obj\Debug\Regulus.Remoting.Unity.pdb
+D:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\obj\Debug\Regulus.Remoting.Unity.csprojResolveAssemblyReference.cache
