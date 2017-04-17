@@ -61,7 +61,8 @@
   <PropertyGroup>
     <PreBuildEvent>
 copy ..\..\..\..\Regulus\Library\PureLib\$(OutDir)RegulusLibrary.dll     $(SolutionDir)Library
-copy ..\..\..\..\Regulus\Library\PureLib\$(OutDir)protobuf-net.dll $(SolutionDir)Library</PreBuildEvent>
+copy ..\..\..\..\Regulus\Library\PureLib\$(OutDir)protobuf-net.dll $(SolutionDir)Library
+copy ..\..\..\..\Regulus\Library\Remoting\$(OutDir)RegulusRemoting.dll $(SolutionDir)Library</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
