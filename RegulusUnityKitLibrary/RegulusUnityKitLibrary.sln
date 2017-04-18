@@ -1,9 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Regulus.Remoting.Unity", "Regulus.Remoting.Unity\Regulus.Remoting.Unity.csproj", "{CFA6CB4D-6EBE-49FD-B6BA-6C945BB127D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegulusLibrary", "..\Regulus\Library\PureLib\RegulusLibrary.csproj", "{2F28AA04-316D-4C20-BF46-987D4A59691D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remoting", "..\Regulus\Library\Remoting\Remoting.csproj", "{A4CFCE46-BDA8-4416-A1BB-77BD80514019}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Regulus.Remoting.Unity.ProrocolBuilder", "Regulus.Remoting.Unity.ProrocolBuilder\Regulus.Remoting.Unity.ProrocolBuilder.csproj", "{0224F99C-EA58-442A-B295-2AFE827E0AE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegulusProtocol", "..\Regulus\Library\RegulusProtocol\RegulusProtocol.csproj", "{00E8AFF8-E4D5-4327-86F1-D03379419431}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +26,30 @@ Global
 		{CFA6CB4D-6EBE-49FD-B6BA-6C945BB127D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFA6CB4D-6EBE-49FD-B6BA-6C945BB127D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFA6CB4D-6EBE-49FD-B6BA-6C945BB127D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F28AA04-316D-4C20-BF46-987D4A59691D}.Debug_Unity|Any CPU.ActiveCfg = Debug_Unity|Any CPU
+		{2F28AA04-316D-4C20-BF46-987D4A59691D}.Debug_Unity|Any CPU.Build.0 = Debug_Unity|Any CPU
+		{2F28AA04-316D-4C20-BF46-987D4A59691D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F28AA04-316D-4C20-BF46-987D4A59691D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F28AA04-316D-4C20-BF46-987D4A59691D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F28AA04-316D-4C20-BF46-987D4A59691D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4CFCE46-BDA8-4416-A1BB-77BD80514019}.Debug_Unity|Any CPU.ActiveCfg = Debug_Unity|Any CPU
+		{A4CFCE46-BDA8-4416-A1BB-77BD80514019}.Debug_Unity|Any CPU.Build.0 = Debug_Unity|Any CPU
+		{A4CFCE46-BDA8-4416-A1BB-77BD80514019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4CFCE46-BDA8-4416-A1BB-77BD80514019}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4CFCE46-BDA8-4416-A1BB-77BD80514019}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4CFCE46-BDA8-4416-A1BB-77BD80514019}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0224F99C-EA58-442A-B295-2AFE827E0AE2}.Debug_Unity|Any CPU.ActiveCfg = Debug|Any CPU
+		{0224F99C-EA58-442A-B295-2AFE827E0AE2}.Debug_Unity|Any CPU.Build.0 = Debug|Any CPU
+		{0224F99C-EA58-442A-B295-2AFE827E0AE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0224F99C-EA58-442A-B295-2AFE827E0AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0224F99C-EA58-442A-B295-2AFE827E0AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0224F99C-EA58-442A-B295-2AFE827E0AE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00E8AFF8-E4D5-4327-86F1-D03379419431}.Debug_Unity|Any CPU.ActiveCfg = Debug|Any CPU
+		{00E8AFF8-E4D5-4327-86F1-D03379419431}.Debug_Unity|Any CPU.Build.0 = Debug|Any CPU
+		{00E8AFF8-E4D5-4327-86F1-D03379419431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00E8AFF8-E4D5-4327-86F1-D03379419431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00E8AFF8-E4D5-4327-86F1-D03379419431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00E8AFF8-E4D5-4327-86F1-D03379419431}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

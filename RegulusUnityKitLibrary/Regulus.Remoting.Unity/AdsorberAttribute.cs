@@ -6,11 +6,12 @@ using System.Reflection;
 namespace Regulus.Remoting.Unity
 {
     
-
+    
     public class AdsorberAttribute : System.Attribute
     {
         public AdsorberAttribute(Type adsorber, string target)
         {
+            
             Adsorber = adsorber;
             
             Target = target;
