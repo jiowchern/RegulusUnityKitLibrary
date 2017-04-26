@@ -38,5 +38,3 @@ D:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus
 D:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Serialization.dll
 D:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\protobuf-net.xml
 D:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Serialization.pdb
-D:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\RegulusRemoting.dll
-D:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\RegulusRemoting.pdb
