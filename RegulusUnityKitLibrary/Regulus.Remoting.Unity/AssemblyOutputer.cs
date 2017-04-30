@@ -9,64 +9,66 @@ using Microsoft.CSharp;
 namespace Regulus.Remoting.Unity
 {
     public class AssemblyOutputer
-    {
-        //private readonly Assembly _CommonAsm;
+    {        
 
-        private readonly Assembly _UnityEngine;
+        private readonly Assembly _CommonAsm;
 
-        private readonly string _CommonNamespace;
+        private readonly string _AgentName;
 
         private readonly Type[] _Types;
 
+        private string _AgentNamespace;
+
+        private readonly string _ProviderName;
+
         public event Action<string> ErrorMessageEvent;
 
-        public AssemblyOutputer(Assembly common_asm, Assembly unity_engine, string common_namespace)
+        public AssemblyOutputer(Assembly common_asm, string agent_name)
         {
-            _UnityEngine = unity_engine;
-            _CommonNamespace = common_namespace;
+            _CommonAsm = common_asm;
+            
+            _AgentName = agent_name;
 
             _Types = _GetTypes(common_asm).ToArray();
+
+            var tokens = agent_name.Split(new[] { '.' });
+            _AgentNamespace = string.Join(".", tokens.Take(tokens.Count() - 1).ToArray());
+
+            _ProviderName = _AgentNamespace + ".Provider";
         }
 
-        public AssemblyOutputer(Type[] types,Assembly unity_engine, string common_namespace)
-        {            
-            _UnityEngine = unity_engine;
-            _CommonNamespace = common_namespace;
+       
 
-            _Types = _GetTypes(types);
-        }
-
-        private Type[] _GetTypes(Type[] types)
-        {
-            return
-                (from type in types
-                 where type.IsInterface && type.Namespace != null && type.Namespace == _CommonNamespace
-                 select type).ToArray();
-        }
-
+        
         private IEnumerable<Type> _GetTypes(Assembly asm)
         {
-            var types = asm.GetTypes();
+            var types = asm.GetExportedTypes();
             foreach (var type in types)
             {
-                if (type.IsInterface && type.Namespace == _CommonNamespace)
-                {
-                    yield return type;
-                }
+                yield return type;
             }
         }
 
-        public void OutputDll(string output_path , string asm_path)
+        public void OutputDll(string output_path , 
+            Assembly unity_engine , 
+            Assembly regulus_library , 
+            Assembly regulus_remoting , 
+            Assembly regulus_protocol , 
+            Assembly regulus_remoting_unity ,
+            Assembly regulus_remoting_ghost,
+            Assembly regulus_serialization
+            )
         {
+
             var codes = new List<string>();
 
             var protocolBuilder = new Regulus.Protocol.CodeBuilder();
             protocolBuilder.ProviderEvent += (name,code) => codes.Add(code);
             protocolBuilder.GpiEvent += (name, code) => codes.Add(code);
             protocolBuilder.EventEvent += (type_name, event_name, code) => codes.Add(code);
-            protocolBuilder.Build(_CommonNamespace + ".ProtocolProvider" ,new [] { _CommonNamespace  } , _Types);
+            protocolBuilder.Build(_ProviderName, _Types);
 
-            var unityProtocolBuilder = new Regulus.Remoting.Unity.CodeBuilder(_Types, _CommonNamespace , "ProtocolProvider");
+            var unityProtocolBuilder = new Regulus.Remoting.Unity.CodeBuilder(_Types, _AgentName , _ProviderName);
             
             unityProtocolBuilder.AgentEvent += (name , code) =>  codes.Add(code);
             unityProtocolBuilder.TypeEvent += (name, ads, b) =>
@@ -91,11 +93,15 @@ namespace Regulus.Remoting.Unity
                 ReferencedAssemblies =
                 {
                     "System.Core.dll",
-                    "RegulusLibrary.dll",
-                    "RegulusRemoting.dll",
-                    "protobuf-net.dll",
-                    _UnityEngine.Location,
-                    asm_path
+                    regulus_library.Location,
+                    regulus_remoting.Location,
+                    regulus_protocol.Location,
+                    regulus_remoting_unity.Location,
+                    regulus_serialization.Location,
+                    regulus_remoting_ghost.Location,
+                    unity_engine.Location,
+
+                    _CommonAsm.Location
                 }
             };
             var result = provider.CompileAssemblyFromSource(options, codes.ToArray());
@@ -125,9 +131,9 @@ namespace Regulus.Remoting.Unity
             protocolBuilder.ProviderEvent += (name , code) => _WriteFile(_GetFile(proxy, name) , code);
             protocolBuilder.GpiEvent += (name, code) => _WriteFile(_GetFile(proxy, name), code);
             protocolBuilder.EventEvent += (type_name, event_name, code) => _WriteFile(_GetFile(proxy, type_name + event_name), code);
-            protocolBuilder.Build(_CommonNamespace+".ProtocolProvider", new[] { _CommonNamespace }, _Types);
+            protocolBuilder.Build(_ProviderName, _Types);
 
-            var unityProtocolBuilder = new Regulus.Remoting.Unity.CodeBuilder(_Types, _CommonNamespace, "ProtocolProvider");
+            var unityProtocolBuilder = new Regulus.Remoting.Unity.CodeBuilder(_Types, _AgentName , _ProviderName);
 
             unityProtocolBuilder.AgentEvent += (name,code) => _WriteFile(_GetFile(output_path, name), code);
             unityProtocolBuilder.TypeEvent += (name, ads, b) =>

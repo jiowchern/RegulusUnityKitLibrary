@@ -10,20 +10,38 @@ namespace Regulus.Remoting.Unity
     {
         private readonly Type[] _Types;
 
-        private readonly string _NameSpace;
+        private readonly string _ProviderName;
 
-        private readonly string _ProtocolName;
+        private string _AgentClassName;
+
+        private string _NamespaceHead;
+
+        private string _NamespaceTail;
+
+        private string _Namespace;
 
         public event System.Action<string,string> AgentEvent;
 
         public event System.Action<string , string , string> TypeEvent;
 
-        public CodeBuilder(Type[] types, string name_space , string protocol_name)
+        public CodeBuilder(Type[] types, string agent_name , string provider_name)
         {
             
             _Types = types;
-            _NameSpace = name_space;
-            _ProtocolName = protocol_name;
+            _ProviderName = provider_name;
+
+            var tokens = agent_name.Split(new[] { '.' });
+            _AgentClassName = tokens.Last();
+
+            
+            _NamespaceHead = "";
+            _NamespaceTail = "";
+            _Namespace = string.Join(".", tokens.Take(tokens.Count() - 1).ToArray());
+            if (string.IsNullOrEmpty(_Namespace) == false)
+            {
+                _NamespaceHead = $"namespace {_Namespace}{{ ";
+                _NamespaceTail = "}";
+            }
         }
 
         public void Build()
@@ -37,7 +55,7 @@ namespace Regulus.Remoting.Unity
                 }
 
             if (AgentEvent != null)
-                AgentEvent("Agent" , _BuildAgentCode());
+                AgentEvent(_AgentClassName, _BuildAgentCode());
         }
         
         private string _BuildAgentCode()
@@ -50,9 +68,8 @@ using Regulus.Utility;
 using UnityEngine;
 
 
-namespace {0}.Adsorption
-{{
-    public class Agent : MonoBehaviour
+{0}
+    public class {3} : MonoBehaviour
     {{
         public readonly Regulus.Remoting.Unity.Distributor Distributor;
 
@@ -61,9 +78,9 @@ namespace {0}.Adsorption
 
         private readonly Regulus.Remoting.IAgent _Agent;
         public string Name;
-        public Agent()
+        public {3}()
         {{
-            var protocol = new {1}() as Regulus.Remoting.IProtocol;
+            var protocol = new {2}() as Regulus.Remoting.IProtocol;
             _Agent = Regulus.Remoting.Ghost.Native.Agent.Create(protocol.GetGPIProvider() , protocol.GetSerialize());
             Distributor = new Regulus.Remoting.Unity.Distributor(_Agent);
             _Updater = new Updater();
@@ -101,8 +118,8 @@ namespace {0}.Adsorption
 
         public UnityAgentConnectEvent ConnectEvent;
     }}
-}}
-", _NameSpace , _ProtocolName);
+{1}
+", _NamespaceHead, _NamespaceTail ,_ProviderName , _AgentClassName);
         }
         private string _BuildBroadcasterCode(Type type)
         {
@@ -116,12 +133,11 @@ using Regulus.Utility;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace {0}.Adsorption
-{{
+{3}
     public class {2}Broadcaster : UnityEngine.MonoBehaviour 
     {{
         public string Agent;        
-        Regulus.Remoting.INotifier<{1}> _Notifier;
+        Regulus.Remoting.INotifier<{0}.{1}> _Notifier;
 
         private readonly Regulus.Utility.StageMachine _Machine;
 
@@ -145,7 +161,7 @@ namespace {0}.Adsorption
 
         private void _ScaneUpdate()
         {{
-            var agents = GameObject.FindObjectsOfType<{0}.Adsorption.Agent>();
+            var agents = GameObject.FindObjectsOfType<{5}.{6}>();
             var agent = agents.FirstOrDefault(d => d.Name == Agent);
             if (agent != null)
             {{
@@ -194,24 +210,24 @@ namespace {0}.Adsorption
             _Machine.Termination();
         }}
 
-        private void _Unsupply({1} obj)
+        private void _Unsupply({0}.{1} obj)
         {{
             UnsupplyEvent.Invoke(obj);
         }}
 
-        private void _Supply({1} obj)
+        private void _Supply({0}.{1} obj)
         {{
             SupplyEvent.Invoke(obj);
         }}
 
         [Serializable]
-        public class UnityBroadcastEvent : UnityEvent<{1}>{{}}
+        public class UnityBroadcastEvent : UnityEvent<{0}.{1}>{{}}
 
         public UnityBroadcastEvent SupplyEvent;
         public UnityBroadcastEvent UnsupplyEvent;
     }}
-}}
-", _NameSpace , type.Name, _GetClassName(type.Name));
+{4}
+", type.Namespace , type.Name, _GetClassName(type.Name) , _NamespaceHead , _NamespaceTail, _Namespace , _AgentClassName);
         }
         private string _BuildAdsorberCode(Type type)
         {
@@ -228,7 +244,7 @@ namespace {0}.Adsorption
         
         public string Agent;
 
-        private {0}.Adsorption.Agent _Agent;
+        private global::{8}.{9} _Agent;
 
         [System.Serializable]
         public class UnityEnableEvent : UnityEngine.Events.UnityEvent<bool> {{}}
@@ -250,7 +266,7 @@ namespace {0}.Adsorption
 
         private void _ScanUpdate()
         {{
-            var agents = UnityEngine.GameObject.FindObjectsOfType<{0}.Adsorption.Agent>();
+            var agents = UnityEngine.GameObject.FindObjectsOfType<global::{8}.{9}>();
             _Agent = agents.FirstOrDefault(d => string.IsNullOrEmpty(d.Name) == false && d.Name == Agent);
             if(_Agent != null)
             {{
@@ -312,8 +328,8 @@ namespace {0}.Adsorption
         {4}
     }}
 }}
-                    ", _NameSpace, type.Name, _GenerateMethods(type), _GenerateReturnEvents(type),
-                _GenerateEvents(type), _GetBindEvents(type, "+="), _GetBindEvents(type, "-="), _GetClassName(type.Name));
+                    ", type.Namespace, type.Name, _GenerateMethods(type), _GenerateReturnEvents(type),
+                _GenerateEvents(type), _GetBindEvents(type, "+="), _GetBindEvents(type, "-="), _GetClassName(type.Name),_Namespace , _AgentClassName);
 
 
             return code;
