@@ -19,7 +19,7 @@ namespace Regulus.Remoting.Unity
 
         private string _AgentNamespace;
 
-        private readonly string _ProviderName;
+        private readonly string _ProtocolName;
 
         public event Action<string> ErrorMessageEvent;
 
@@ -34,7 +34,7 @@ namespace Regulus.Remoting.Unity
             var tokens = agent_name.Split(new[] { '.' });
             _AgentNamespace = string.Join(".", tokens.Take(tokens.Count() - 1).ToArray());
 
-            _ProviderName = _AgentNamespace + ".Provider";
+            _ProtocolName = _AgentNamespace + ".Protocol";
         }
 
        
@@ -66,9 +66,9 @@ namespace Regulus.Remoting.Unity
             protocolBuilder.ProviderEvent += (name,code) => codes.Add(code);
             protocolBuilder.GpiEvent += (name, code) => codes.Add(code);
             protocolBuilder.EventEvent += (type_name, event_name, code) => codes.Add(code);
-            protocolBuilder.Build(_ProviderName, _Types);
+            protocolBuilder.Build(_ProtocolName, _Types);
 
-            var unityProtocolBuilder = new Regulus.Remoting.Unity.CodeBuilder(_Types, _AgentName , _ProviderName);
+            var unityProtocolBuilder = new Regulus.Remoting.Unity.CodeBuilder(_Types, _AgentName , _ProtocolName);
             
             unityProtocolBuilder.AgentEvent += (name , code) =>  codes.Add(code);
             unityProtocolBuilder.TypeEvent += (name, ads, b) =>
@@ -131,9 +131,9 @@ namespace Regulus.Remoting.Unity
             protocolBuilder.ProviderEvent += (name , code) => _WriteFile(_GetFile(proxy, name) , code);
             protocolBuilder.GpiEvent += (name, code) => _WriteFile(_GetFile(proxy, name), code);
             protocolBuilder.EventEvent += (type_name, event_name, code) => _WriteFile(_GetFile(proxy, type_name + event_name), code);
-            protocolBuilder.Build(_ProviderName, _Types);
+            protocolBuilder.Build(_ProtocolName, _Types);
 
-            var unityProtocolBuilder = new Regulus.Remoting.Unity.CodeBuilder(_Types, _AgentName , _ProviderName);
+            var unityProtocolBuilder = new Regulus.Remoting.Unity.CodeBuilder(_Types, _AgentName , _ProtocolName);
 
             unityProtocolBuilder.AgentEvent += (name,code) => _WriteFile(_GetFile(output_path, name), code);
             unityProtocolBuilder.TypeEvent += (name, ads, b) =>

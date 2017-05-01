@@ -27,7 +27,7 @@ namespace Regulus.Remoting.Unity
         public CodeBuilder(Type[] types, string agent_name , string provider_name)
         {
             
-            _Types = types;
+            _Types = (from type in types where  type.IsInterface == true select type).ToArray();
             _ProviderName = provider_name;
 
             var tokens = agent_name.Split(new[] { '.' });
