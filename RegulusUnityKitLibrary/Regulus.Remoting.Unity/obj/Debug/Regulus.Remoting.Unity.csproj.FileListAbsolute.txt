@@ -23,9 +23,6 @@ E:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus
 E:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\RegulusRemoting.dll
 E:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\protobuf-net.dll
 E:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\RegulusLibrary.pdb
-E:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\RegulusRemoting.pdb
-E:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\protobuf-net.pdb
-E:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\protobuf-net.xml
 E:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\obj\Debug\Regulus.Remoting.Unity.dll
 E:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\obj\Debug\Regulus.Remoting.Unity.pdb
 D:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\RegulusLibrary.pdb
@@ -33,3 +30,7 @@ D:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus
 D:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Protocol.pdb
 D:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Serialization.dll
 D:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Serialization.pdb
+E:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Protocol.dll
+E:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Serialization.dll
+E:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Protocol.pdb
+E:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Serialization.pdb

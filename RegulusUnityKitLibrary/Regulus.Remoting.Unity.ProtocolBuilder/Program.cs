@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Regulus.Remoting.Unity.ProrocolBuilder
+namespace Regulus.Remoting.Unity.ProtocolBuilder
 {
     class Program
     {
@@ -31,7 +31,6 @@ output_path = path/protocol.dll
                 return;
             }
 
-
             var path = args[0];
 
             var iniStream = System.IO.File.ReadAllText(path);
@@ -43,17 +42,15 @@ output_path = path/protocol.dll
             var commonNamespace = ini.Read("Build", "agent_name");
             var outputPath = ini.Read("Build", "output_path");
 
-
             var commonAsm = Assembly.LoadFile(commonPath);
             var unityengineAsm = Assembly.LoadFile(unityenginePath);
 
-            Assembly regulusLibrary = _GetRegulusLibrary();
-            Assembly regulusRemoting = _GetRegulusRemoting();
-            Assembly regulusProrocol = _GetRegulusProtocol();
-            Assembly regulusProtocolUnity = _GetRegulusProtocolUnity();
-            Assembly regulusRemotingGhost = _GetRegulusRemotingGhost();
-            Assembly regulusSerialization = _GetRegulusSerialization();
-
+            var regulusLibrary = _GetRegulusLibrary();
+            var regulusRemoting = _GetRegulusRemoting();
+            var regulusProrocol = _GetRegulusProtocol();
+            var regulusProtocolUnity = _GetRegulusProtocolUnity();
+            var regulusRemotingGhost = _GetRegulusRemotingGhost();
+            var regulusSerialization = _GetRegulusSerialization();
 
             var assemblyOutputer = new AssemblyOutputer(commonAsm,  commonNamespace);
             assemblyOutputer.ErrorMessageEvent += Console.WriteLine;
@@ -106,17 +103,8 @@ output_path = path/protocol.dll
         {
             var filename = System.IO.Path.GetFileName(location).ToLower();
             return filename == file_name;
-        }
-
-        /*
-        return (from asm in AppDomain.CurrentDomain.GetAssemblies()
-                let fileName = System.IO.Path.GetFileName(asm.Location)
-                where fileName.ToLower() == "unityengine.dll"
-                select asm).First();
-        */
+        }       
     }
-
-
 }
 
 
