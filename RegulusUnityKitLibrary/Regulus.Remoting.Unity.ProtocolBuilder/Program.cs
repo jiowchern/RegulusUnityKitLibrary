@@ -13,7 +13,8 @@ namespace Regulus.Remoting.Unity.ProtocolBuilder
 
         static void Main(string[] args)
         {
-
+            Regulus.Utility.Log.Instance.RecordEvent += _WriteLog;
+            
             if (args.Length != 1)
             {
                 Console.WriteLine("Param 1 Need to build file path.");
@@ -42,8 +43,17 @@ output_path = path/protocol.dll
             var commonNamespace = ini.Read("Build", "agent_name");
             var outputPath = ini.Read("Build", "output_path");
 
-            var commonAsm = Assembly.LoadFile(commonPath);
-            var unityengineAsm = Assembly.LoadFile(unityenginePath);
+            
+            
+            var commandFullPath = System.IO.Path.GetFullPath(commonPath);
+
+            var unityengineFullPath = System.IO.Path.GetFullPath(unityenginePath);
+
+            Console.WriteLine("Common path {0}", commandFullPath);
+            Console.WriteLine("UnityEngine path {0}", unityengineFullPath);
+            var commonAsm = Assembly.LoadFile(commandFullPath);
+            var unityengineAsm = Assembly.LoadFile(unityengineFullPath);
+
 
             var regulusLibrary = _GetRegulusLibrary();
             var regulusRemoting = _GetRegulusRemoting();
@@ -54,12 +64,23 @@ output_path = path/protocol.dll
 
             var assemblyOutputer = new AssemblyOutputer(commonAsm,  commonNamespace);
             assemblyOutputer.ErrorMessageEvent += Console.WriteLine;
-            assemblyOutputer.OutputDll(outputPath , unityengineAsm , regulusLibrary , regulusRemoting , regulusProrocol , regulusProtocolUnity , regulusRemotingGhost , regulusSerialization);            
+            assemblyOutputer.OutputDll(outputPath , unityengineAsm , regulusLibrary , regulusRemoting , regulusProrocol , regulusProtocolUnity , regulusRemotingGhost , regulusSerialization);
+
+
+            Regulus.Utility.Log.Instance.WaitDone();
+
+            Console.WriteLine("done");
+
+        }
+
+        private static void _WriteLog(string message)
+        {
+            Console.WriteLine(message);
         }
 
         private static Assembly _GetRegulusSerialization()
         {
-            return _GetAssembly("Regulus.Serialization.dll");
+            return _GetAssembly("regulus.Serialization.dll");
         }
 
         private static Assembly _GetRegulusRemotingGhost()
@@ -89,21 +110,10 @@ output_path = path/protocol.dll
 
         private static Assembly _GetAssembly(string filename)
         {
-            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
-            {
-                if (_Check(assembly.Location, filename))
-                {
-                    return assembly;
-                }
-            }
-            throw new Exception("Can not find library. " + filename );
+            return Assembly.LoadFile(System.IO.Path.GetFullPath(filename));
         }
 
-        private static bool _Check(string location, string file_name)
-        {
-            var filename = System.IO.Path.GetFileName(location).ToLower();
-            return filename == file_name;
-        }       
+        
     }
 }
 

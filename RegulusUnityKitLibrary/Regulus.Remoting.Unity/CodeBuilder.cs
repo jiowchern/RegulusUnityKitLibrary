@@ -398,7 +398,7 @@ namespace {0}.Adsorption
         private static string _GetArgTypes(Type[] generic_arguments)
         {
             if (generic_arguments.Any())
-                return "<" + string.Join(",", (from arg in generic_arguments select arg.ToString()).ToArray()) + ">";
+                return "<" + string.Join(",", (from arg in generic_arguments select arg.ToString().Replace("+",".")).ToArray()) + ">";
             return String.Empty;
         }
 
