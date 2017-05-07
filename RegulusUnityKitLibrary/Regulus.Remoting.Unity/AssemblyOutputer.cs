@@ -93,6 +93,7 @@ namespace Regulus.Remoting.Unity
                 ReferencedAssemblies =
                 {
                     "System.Core.dll",
+                    "System.xml.dll",
                     regulus_library.Location,
                     regulus_remoting.Location,
                     regulus_protocol.Location,
@@ -102,7 +103,7 @@ namespace Regulus.Remoting.Unity
                     unity_engine.Location,
 
                     _CommonAsm.Location
-                }
+                }, IncludeDebugInformation = true
             };
             var result = provider.CompileAssemblyFromSource(options, codes.ToArray());
 
@@ -110,9 +111,10 @@ namespace Regulus.Remoting.Unity
             if(ErrorMessageEvent != null)
                 for (int i = 0; i < result.Errors.Count; i++)
                 {
-                    var error = result.Errors[i];
+                    ErrorMessageEvent(result.Errors[i].ErrorText);
+                    /*var error = result.Errors[i];
                     if(error.IsWarning == false)
-                        ErrorMessageEvent(result.Errors[i].ErrorText);
+                        ErrorMessageEvent(result.Errors[i].ErrorText);*/
                 }
                 
         }
