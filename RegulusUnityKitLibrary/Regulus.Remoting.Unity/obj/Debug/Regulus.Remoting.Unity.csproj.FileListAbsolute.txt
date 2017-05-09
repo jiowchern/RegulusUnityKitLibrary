@@ -34,3 +34,16 @@ E:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus
 E:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Serialization.dll
 E:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Protocol.pdb
 E:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Serialization.pdb
+E:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\obj\Debug\Regulus.Remoting.Unity.csprojResolveAssemblyReference.cache
+E:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Remoting.Unity.dll
+E:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Remoting.Unity.pdb
+E:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Protocol.dll
+E:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\RegulusLibrary.dll
+E:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\RegulusRemoting.dll
+E:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Serialization.dll
+E:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\RegulusLibrary.pdb
+E:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\RegulusRemoting.pdb
+E:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Protocol.pdb
+E:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Serialization.pdb
+E:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\obj\Debug\Regulus.Remoting.Unity.dll
+E:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\obj\Debug\Regulus.Remoting.Unity.pdb

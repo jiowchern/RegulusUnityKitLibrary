@@ -69,26 +69,23 @@ using UnityEngine;
 
 
 {0}
-    public class {3} : MonoBehaviour
+    public abstract class {3} : MonoBehaviour
     {{
-        public readonly Regulus.Remoting.Unity.Distributor Distributor;
-
-
+        private Regulus.Remoting.Unity.Distributor _Distributor ;
+        public Regulus.Remoting.Unity.Distributor Distributor {{ get{{ return _Distributor ; }} }}
         private readonly Regulus.Utility.Updater _Updater;
 
-        private readonly Regulus.Remoting.IAgent _Agent;
+        private Regulus.Remoting.IAgent _Agent;
         public string Name;
         public {3}()
-        {{
-            var protocol = new {2}() as Regulus.Remoting.IProtocol;
-            _Agent = Regulus.Remoting.Ghost.Native.Agent.Create(protocol.GetGPIProvider() , protocol.GetSerialize());
-            Distributor = new Regulus.Remoting.Unity.Distributor(_Agent);
+        {{            
             _Updater = new Updater();
-
         }}
-
+        public abstract Regulus.Remoting.IAgent _GetAgent();
         void Start()   
         {{
+            _Agent = _GetAgent();
+            _Distributor  = new Regulus.Remoting.Unity.Distributor(_Agent);
             _Updater.Add(_Agent);
         }}
         // Use this for initialization
