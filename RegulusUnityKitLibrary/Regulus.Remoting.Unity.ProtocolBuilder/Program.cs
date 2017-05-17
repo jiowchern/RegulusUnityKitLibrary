@@ -41,7 +41,7 @@ output_path = path/protocol.dll
             var unityenginePath = ini.Read("Build", "unityengine_path");            
             
             var commonNamespace = ini.Read("Build", "agent_name");
-            var outputPath = ini.Read("Build", "output_path");
+            
 
             
             
@@ -64,13 +64,44 @@ output_path = path/protocol.dll
 
             var assemblyOutputer = new AssemblyOutputer(commonAsm,  commonNamespace);
             assemblyOutputer.ErrorMessageEvent += Console.WriteLine;
-            assemblyOutputer.OutputDll(outputPath , unityengineAsm , regulusLibrary , regulusRemoting , regulusProrocol , regulusProtocolUnity , regulusRemotingGhost , regulusSerialization);
+
+            string outputPath;
+            if (_TryGetIniString(ini, "Build" , "output_path", out outputPath))
+            {
+                assemblyOutputer.OutputDll(outputPath, unityengineAsm, regulusLibrary, regulusRemoting, regulusProrocol, regulusProtocolUnity, regulusRemotingGhost, regulusSerialization);
+            }
+
+
+            string outputDir;
+            if (_TryGetIniString(ini, "Build", "output_dir", out outputDir))
+            {
+                assemblyOutputer.OutputDir(outputDir);
+            }
+
+
 
 
             Regulus.Utility.Log.Instance.WaitDone();
 
             Console.WriteLine("done");
 
+        }
+
+        private static bool _TryGetIniString(Regulus.Utility.Ini ini, string section , string key,out string text)
+        {
+            text = string.Empty;
+            bool success = false;
+            try
+            {
+                text = ini.Read(section, key);
+                success = true;
+            }
+            catch (Exception)
+            {
+                
+            }
+
+            return success;
         }
 
         private static void _WriteLog(string message)
