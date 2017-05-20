@@ -47,3 +47,5 @@ E:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\
 E:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\Regulus.Serialization.pdb
 E:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\obj\Debug\Regulus.Remoting.Unity.dll
 E:\Develop\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\obj\Debug\Regulus.Remoting.Unity.pdb
+D:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\RegulusRemoting.dll
+D:\Develop\RegulusUnityKit\RegulusUnityKitLibrary\RegulusUnityKitLibrary\Regulus.Remoting.Unity\bin\Debug\RegulusRemoting.pdb

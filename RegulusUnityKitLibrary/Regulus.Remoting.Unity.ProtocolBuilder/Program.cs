@@ -25,6 +25,7 @@ common_path = path/common.dll
 unityengine_path = path/UnityEngine.dll
 agent_name = Namespace.Agent
 output_path = path/protocol.dll
+output_dir = path/dir
 ";
                 Console.WriteLine("The format is as follows");                
                 Console.WriteLine(iniSample);
